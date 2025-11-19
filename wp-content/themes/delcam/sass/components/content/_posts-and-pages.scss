@@ -1,0 +1,1122 @@
+.sticky {
+  display: block;
+}
+
+.post,
+.page {
+  margin: 0 0;
+}
+
+.updated:not(.published) {
+  display: none;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+  margin: 0 0;
+}
+
+.page-links {
+  clear: both;
+  margin: 0 0 1.5em;
+}
+
+.site-main {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Homepage Hero */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  &__video {
+    display:none;
+    @media (min-width:$laptop){
+      display:block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 2;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(
+      0,
+      0,
+      0,
+      0.5
+    ); // Optional: darken the video for text readability
+    z-index: 3;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 5;
+    padding: 0 1.5rem;
+    max-width: 800px;
+
+    .hero__title {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      font-weight: 300;
+      text-wrap: balance;
+      b {
+        font-weight: 700;
+      }
+
+      @media (min-width: $mobile) {
+        font-size: 4rem;
+      }
+    }
+
+    .hero__subtitle {
+      font-size: 1.25rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      font-weight: 300;
+
+      @media (min-width: $mobile) {
+        font-size: 1.5rem;
+      }
+    }
+
+    .hero__cta {
+      display: inline-block;
+      background: #00427e;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: #0060b6;
+      }
+    }
+  }
+}
+/* Interior page hero */
+
+.interior-hero {
+  background-color: #f4f6f8;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 6rem 1.5rem 4rem;
+  text-align: center;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); // optional dark overlay for text contrast
+    z-index: 1;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: 300;
+    text-wrap: balance;
+
+    @media (min-width: $mobile) {
+      font-size: 3.5rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.125rem;
+    margin-top: 1rem;
+    color: #4a4a4a;
+
+    @media (min-width: $mobile) {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+.lg-callout {
+  padding: 4rem 3rem;
+}
+.button-group {
+  display: table;
+  margin: 2rem auto;
+  .btn {
+    display: table;
+    margin: 0.5rem auto;
+    @media (min-width:$laptop){
+      display: inline-block;
+      margin: 0 0.5rem;
+    }
+  }
+}
+
+/** Callouts */
+.callouts {
+  background-color: #f8f9fb;
+  padding: 4rem 1.5rem 6rem;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+
+    @media (min-width: $mobile) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  &__heading {
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    text-align: center;
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.callout {
+  background: #fff;
+  padding: 2rem;
+  border: 1px solid $color__background-hr;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &__icon {
+    display: table;
+    margin: 0 auto 1.5rem;
+    background-color: $mint_green;
+    padding: 1rem;
+    border-radius: 50%;
+    img {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  h3 {
+    position: relative;
+    font-size: 1.5rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 0.25rem;
+    &:after {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      content: " ";
+      height: 2px;
+      width: 100px;
+      background-color: $dark_blue;
+      transform: translateX(-50%);
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+}
+/* Highlighted boxes */
+.highlighted-section {
+  padding: 4rem 1.5rem;
+  background-color: #f8f9fb;
+  text-align: center;
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+
+    @media (min-width: $mobile) {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+.highlighted-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  @media (min-width: $mobile) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $laptop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.highlighted-box {
+  background: #fff;
+  padding: 2rem;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid $color__background-hr;
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+  .icon-wrapper {
+    display: flex;
+    height: 80px;
+    width: 80px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-color: $mint_green;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    img {
+      height: 50px;
+      width: 50px;
+    }
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #1a1a1a;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+  }
+}
+.basic {
+  padding: 4rem 1.5rem;
+}
+.section-headline {
+  h2,
+  p {
+    text-align: center;
+  }
+}
+
+/* Team Member Grid */
+.team-grid {
+  padding: 4rem 1.5rem;
+  background-color: $light_grey;
+
+  &__title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    @media (min-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: $laptop) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+.team-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  border: 1px solid $color__background-hr;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &__photo img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  &__name {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  p {
+    margin: 0.5rem 0;
+    padding: 0;
+  }
+  a {
+    display: inline-block;
+    font-size: 1rem;
+    color: #0073b1;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+/* Team Modal */
+.team-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  display: none; // toggle via JS when opened
+  &[aria-hidden="false"] {
+    display: block;
+  }
+  &.active {
+    display: block;
+  }
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(2px);
+  }
+
+  &__content {
+    position: relative;
+    max-width: 1100px;
+    margin: 48px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    padding: 28px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    border: 0;
+    background: transparent;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    color: #111827;
+    padding: 6px 8px;
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 24px;
+    align-items: start;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__media {
+    width: 100%;
+    .team-modal__img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+      background: #f3f4f6;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1.2;
+    color: #111827;
+  }
+
+  &__contacts {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+  }
+
+  .contact-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: #111827;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1;
+
+    &:hover {
+      background: #e5e7eb;
+    }
+
+    &__icon {
+      font-weight: 700;
+      font-size: 14px;
+    }
+    &__text {
+      white-space: nowrap;
+    }
+  }
+
+  &__body {
+    margin-top: 24px;
+    color: #374151;
+    .container {
+      padding: 0;
+    }
+    p {
+      margin: 0 0 1em;
+    }
+    ul,
+    ol {
+      margin: 0 0 1em 1.25em;
+    }
+    h3,
+    h4,
+    h5 {
+      margin: 1em 0 0.5em;
+      color: #111827;
+    }
+  }
+}
+
+/* Company Portfolio */
+.delcam-portfolio.block {
+  display: block;
+  padding: 4rem 2rem;
+  @media (min-width: $laptop) {
+    padding: 4rem 0;
+  }
+}
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding:0 2rem;
+  @media (min-width: $mobile) {
+    grid-template-columns: repeat(2, 1fr);
+    padding:0; 
+  }
+
+  @media (min-width: $laptop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .portfolio-card {
+    color: $color__text-screen;
+    text-decoration: none;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    border: 1px solid $color__background-hr;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    &__image {
+      height: 130px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-content: center;
+      align-items: center;
+      img {
+        width: auto;
+        height: 125px;
+      }
+    }
+
+    &__name {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    p {
+      margin: 0.5rem 0;
+      padding: 0;
+    }
+    a {
+      display: inline-block;
+      font-size: 1rem;
+      color: #0073b1;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+/* === LIST LAYOUT === */
+.portfolio-list {
+  display: grid;
+  gap: 1rem;
+  padding: 4rem 1.5rem; // keep the spacing from your old .portfolio-grid
+  margin: 0 auto;
+  list-style: none;
+  max-width: 1300px;
+}
+
+.portfolio-item {
+  background: #fff;
+  border: 1px solid $color__background-hr;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  color: $color__text-screen;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* Whole row is the link */
+.portfolio-row {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  min-height: 305px;
+  
+  &:hover,
+  &:focus {
+    color: inherit;
+  }
+  @media (min-width: $laptop) {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* logo | content | arrow */
+  }
+}
+
+/* Logo */
+.portfolio-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  width: 250px;
+  padding: 0.5rem;
+
+  &__img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  &__placeholder {
+    height: 100%;
+    width: 100%;
+    border: 1px dashed $color__background-hr;
+    border-radius: 0.5rem;
+  }
+}
+
+/* Main content */
+.portfolio-main {
+  min-width: 0; /* allows text truncation to work */
+}
+
+.portfolio-title {
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+}
+
+.portfolio-categories {
+  margin: 0 0 0.75rem;
+
+  .portfolio-category {
+    display: inline-block;
+    background: #f0f0f0;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+  }
+}
+
+/* Description (your AOS paragraph hooks still apply) */
+.portfolio-desc {
+  font-size: 0.95rem;
+  color: #555;
+
+  /* Optional truncation example
+  p {
+    margin: 0 0 .5rem;
+  }
+  */
+}
+
+/* Arrow */
+.portfolio-arrow {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.15s ease;
+  }
+
+  /* Nudge on hover */
+  .portfolio-row:hover &__icon {
+    transform: translateX(2px);
+  }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: $mobile) {
+  .portfolio-row {
+    grid-template-columns: 200px 1fr 20px;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+  .portfolio-logo {
+    height: 200px;
+    width: 200px;
+  }
+  .portfolio-title {
+    font-size: 1.05rem;
+  }
+}
+
+/* === REMOVE OLD GRID/CARD (optional clean-up) ===
+   If you no longer use the grid cards, you can delete these:
+   .portfolio-grid, .portfolio-card, .portfolio-card__*
+*/
+
+.grid-list {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 4rem 1.5rem;
+    @media (min-width:$laptop) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    article {
+      display: block;
+      background: #fff;
+      border: 1px solid $color__background-hr;
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      color: $color__text-screen;
+      padding: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      &__image {
+        max-height: 200px;
+        padding: 3rem;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          object-fit: contain;
+        }
+      }
+      .post-thumbnail {
+        display: block;
+        margin-bottom: 0.5rem;
+        img {
+          border-radius: 1rem;
+        }
+      }
+      .posted-on {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-style: italic;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+        line-height: 1.2;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        a {
+          text-decoration: none;
+          color: $color__text-screen;
+        }
+      }
+      .entry-header,
+      .entry-content {
+        padding: 0 1rem;
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.grid-list.posts {
+  .container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; // 2/3 + 1/3
+    gap: 1rem;
+    padding: 4rem 1.5rem;
+    align-items: start;
+
+    // Base card styling
+    article {
+      display: block;
+      background: #fff;
+      border: 1px solid $color__background-hr;
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      color: $color__text-screen;
+      padding:1rem 0.75rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      @media (min-width:$laptop){
+        padding: 2rem;
+      }
+      &__image {
+        max-height: 200px;
+        padding: 3rem;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+
+        img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          object-fit: contain;
+        }
+      }
+
+      .post-thumbnail {
+        display: block;
+        margin-bottom: 0.5rem;
+
+        img {
+          border-radius: 1rem;
+        }
+      }
+
+      .posted-on {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-style: italic;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+        line-height: 1.2;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+
+        a {
+          text-decoration: none;
+          color: $color__text-screen;
+        }
+      }
+
+      .entry-header,
+      .entry-content {
+        padding: 0 1rem;
+
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    /* Placement rules */
+    // 1) Featured (left, 2/3 width)
+    article.is-featured {
+      grid-column: 1 / 2; // left column
+      h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+    }
+
+    // 2) Rail items (right column, stacked vertically)
+    article.is-rail {
+      grid-column: 2 / 3; // right column
+      margin: 1rem 0;
+      &:first-child {
+        margin-top: 0;
+      }
+      h2 {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+    }
+
+    // 3) Everything after the first 4 posts:
+    //    keep a sensible layout; this makes them flow below as full-width rows.
+    //    Change to "grid-column: 1 / -1" or a different grid as desired.
+    article.is-standard {
+      grid-column: 1 / -1; // take full width below the hero/rail section
+    }
+
+    /* Optional: tweak spacing between stacked rail cards */
+    article.is-rail + article.is-rail {
+      margin-top: 0; // grid gap already handles spacing
+    }
+  }
+
+  /* Responsive: collapse to single column on small screens */
+  @media (max-width: $mobile) {
+    .container {
+      grid-template-columns: 1fr;
+
+      article,
+      article.is-featured,
+      article.is-rail,
+      article.is-standard {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+}
+
+/* Split Content */
+.split-block {
+  padding: 4rem 1.5rem;
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+    @media (min-width: $mobile) {
+      flex-direction: row;
+      align-items: center;
+      padding: 0 2rem;
+    }
+  }
+
+  &__media {
+    flex: 1;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #333;
+
+      @media (min-width: $mobile) {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+/* Split Content */
+.split-vertical-blocks {
+  padding: 4rem 1.5rem;
+  background-color: $light_grey;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+
+    @media (min-width: $mobile) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  &__blocks {
+    flex: 1;
+
+    .block-item {
+      border-bottom: 1px solid #ccc;
+      padding: 0.5rem 0;
+      .block-content {
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        color: #444;
+      }
+    }
+  }
+
+  &__content {
+    position: initial;
+    @media (min-width:$laptop){
+      flex: 1;
+      position: sticky; 
+      top: 100px;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+/* Footer elements */
+.site-footer {
+  background-color: $dark_blue;
+  padding: 2rem 1.5rem;
+  color: white;
+  .container {
+    max-width: 1400px;
+    padding: 0 1rem;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  .site-info {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: $laptop) {
+      flex-direction: row;
+    }
+    .site-footer-branding {
+      width: 100%;
+      @media (min-width: $laptop) {
+        width: 50%;
+      }
+    }
+    .site-footer-nav {
+      width: 100%;
+      @media (min-width: $laptop) {
+        width: 25%;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+          padding: 5px 0;
+          margin: 0;
+          a {
+            font-weight: 300;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+    .site-footer-address {
+      width: 100%;
+      @media (min-width: $laptop) {
+        width: 25%;
+      }
+      .social-links {
+        a {
+          text-decoration: none;
+          .social-icon {
+            height: 30px;
+            width: 30px;
+          }
+        }
+      }
+    }
+  }
+  .site-footer-legal {
+    padding-top: 10px;
+    color: white;
+  }
+}
