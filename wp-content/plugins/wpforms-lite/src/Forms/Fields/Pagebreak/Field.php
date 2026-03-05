@@ -41,12 +41,13 @@ class Field extends WPForms_Field {
 	public function init() {
 
 		// Define field type information.
-		$this->name     = esc_html__( 'Page Break', 'wpforms-lite' );
-		$this->keywords = esc_html__( 'progress bar, multi step, multi part', 'wpforms-lite' );
-		$this->type     = 'pagebreak';
-		$this->icon     = 'fa-files-o';
-		$this->order    = 160;
-		$this->group    = 'fancy';
+		$this->name            = esc_html__( 'Page Break', 'wpforms-lite' );
+		$this->keywords        = esc_html__( 'progress bar, multi step, multi part', 'wpforms-lite' );
+		$this->type            = 'pagebreak';
+		$this->icon            = 'fa-files-o';
+		$this->order           = 160;
+		$this->group           = 'fancy';
+		$this->allow_read_only = false;
 
 		$this->init_pro_field();
 		$this->hooks();
@@ -60,6 +61,8 @@ class Field extends WPForms_Field {
 	protected function hooks() {
 
 		add_filter( 'wpforms_field_preview_class', [ $this, 'preview_field_class' ], 10, 2 );
+		add_filter( 'wpforms_field_preview_display_duplicate_button', [ $this, 'field_display_duplicate_button' ], 10, 2 );
+		add_filter( 'wpforms_field_new_display_duplicate_button', [ $this, 'field_display_duplicate_button' ], 10, 2 );
 	}
 
 	/**
@@ -118,7 +121,7 @@ class Field extends WPForms_Field {
 
 		$this->field_options_basic_top( $field, $position );
 
-		// Page Title, don't display for bottom pagebreaks.
+		// Page Title, don't display for bottom page breaks.
 		if ( $position !== 'bottom' ) {
 			$lbl = $this->field_element(
 				'label',
@@ -141,12 +144,15 @@ class Field extends WPForms_Field {
 				false
 			);
 
+			$indicator = ! empty( $field['indicator'] ) ? esc_attr( $field['indicator'] ) : 'progress';
+
 			$this->field_element(
 				'row',
 				$field,
 				[
 					'slug'    => 'title',
 					'content' => $lbl . $fld,
+					'class'   => $indicator === 'none' ? 'wpforms-hidden' : '',
 				]
 			);
 		}
@@ -183,7 +189,7 @@ class Field extends WPForms_Field {
 			);
 		}
 
-		// Options are not available to top pagebreaks.
+		// Options are not available to top page breaks.
 		if ( $position !== 'top' ) {
 
 			// Previous button toggle.
@@ -290,7 +296,7 @@ class Field extends WPForms_Field {
 			[
 				'slug'    => 'progress_text',
 				'content' => $lbl . $fld,
-				'class'   => $indicator !== 'progress' ? 'wpforms-hidden' : '', // Hide if indicator is not set to progress.
+				'class'   => $indicator !== 'progress' ? 'wpforms-hidden' : '', // Hide if the indicator is not set to progress.
 			]
 		);
 	}
@@ -336,12 +342,15 @@ class Field extends WPForms_Field {
 			],
 			false
 		);
-		$fld    = $this->field_element(
+
+		$indicator = ! empty( $field['indicator'] ) ? esc_attr( $field['indicator'] ) : 'progress';
+
+		$fld = $this->field_element(
 			'select',
 			$field,
 			[
 				'slug'    => 'indicator',
-				'value'   => ! empty( $field['indicator'] ) ? esc_attr( $field['indicator'] ) : 'progress',
+				'value'   => $indicator,
 				'options' => $themes,
 				'class'   => 'wpforms-pagebreak-progress-indicator',
 			],
@@ -384,13 +393,19 @@ class Field extends WPForms_Field {
 			false
 		);
 
+		$indicator_color_classes = [ 'color-picker-row' ];
+
+		if ( $indicator === 'none' ) {
+			$indicator_color_classes[] = 'wpforms-hidden';
+		}
+
 		$this->field_element(
 			'row',
 			$field,
 			[
 				'slug'    => 'indicator_color',
 				'content' => $lbl . $fld,
-				'class'   => 'color-picker-row',
+				'class'   => $indicator_color_classes,
 			]
 		);
 
@@ -519,7 +534,7 @@ class Field extends WPForms_Field {
 		$label      = $position === 'normal' && empty( $label ) ? esc_html__( 'Page Break', 'wpforms-lite' ) : $label;
 
 		/**
-		 * Fires before page break is displayed on the preview.
+		 * Fires before the page break is displayed on the preview.
 		 *
 		 * @since 1.7.9
 		 *
@@ -578,7 +593,7 @@ class Field extends WPForms_Field {
 		echo '</div>';
 
 		/**
-		 * Fires after page break is displayed on the preview.
+		 * Fires after a page break is displayed on the preview.
 		 *
 		 * @since 1.7.9
 		 *
@@ -589,7 +604,7 @@ class Field extends WPForms_Field {
 	}
 
 	/**
-	 * Add class to the builder field preview.
+	 * Add a class to the builder field preview.
 	 *
 	 * @since 1.9.4
 	 *
@@ -641,5 +656,27 @@ class Field extends WPForms_Field {
 		$render_engine = wpforms_get_render_engine();
 
 		return array_key_exists( $render_engine, self::DEFAULT_INDICATOR_COLOR ) ? self::DEFAULT_INDICATOR_COLOR[ $render_engine ] : self::DEFAULT_INDICATOR_COLOR['modern'];
+	}
+
+	/**
+	 * Disallow the field preview "Duplicate" button.
+	 *
+	 * @since 1.9.9
+	 *
+	 * @param bool|mixed $display Display switch.
+	 * @param array      $field   Field settings.
+	 *
+	 * @return bool
+	 */
+	public function field_display_duplicate_button( $display, array $field ): bool {
+
+		$type = $field['type'] ?? '';
+
+		if ( $type === $this->type ) {
+			// Pagebreak fields cannot be duplicated.
+			return false;
+		}
+
+		return (bool) $display;
 	}
 }
