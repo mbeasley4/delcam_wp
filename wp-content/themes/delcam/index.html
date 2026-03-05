@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DelCam Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --navy:    #0B2545;
+    --blue:    #1E5FA8;
+    --sky:     #2E7DD1;
+    --accent:  #1A8FE3;
+    --gold:    #C8922A;
+    --gold-light: #E8B84B;
+    --light:   #EEF4FB;
+    --white:   #FFFFFF;
+    --mid:     #6B7B8D;
+    --dark:    #0A1E35;
+    --border:  rgba(30, 95, 168, 0.18);
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--white); color: var(--navy); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+  .font-display { font-family: 'Bebas Neue', cursive; }
+  .font-mono    { font-family: 'JetBrains Mono', monospace; }
+
+  nav { background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+
+  .hero-bg {
+    background:
+      radial-gradient(ellipse at 70% -10%, rgba(30,95,168,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 0% 110%, rgba(11,37,69,0.06) 0%, transparent 50%),
+      var(--light);
+  }
+  .hero-grid {
+    background-image:
+      linear-gradient(rgba(30,95,168,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,95,168,0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .stat-number { font-family: 'Bebas Neue', cursive; font-size: clamp(2.8rem, 6vw, 6rem); line-height: 1; color: var(--blue); }
+  .stat-number.gold { color: var(--gold); }
+
+  .card { background: var(--white); border: 1px solid var(--border); transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--accent)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+  .card:hover { border-color: rgba(30,95,168,0.35); box-shadow: 0 12px 40px rgba(11,37,69,0.1); transform: translateY(-4px); }
+  .card:hover::before { transform: scaleX(1); }
+
+  .card-gold::before { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+
+  .accent-line { width: 40px; height: 3px; background: linear-gradient(90deg, var(--blue), var(--accent)); }
+  .accent-line-gold { width: 40px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+
+  .btn-primary { background: linear-gradient(135deg, var(--blue), var(--sky)); color: white; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; transition: all 0.25s; }
+  .btn-primary:hover { box-shadow: 0 8px 30px rgba(30,95,168,0.4); transform: translateY(-1px); }
+
+  .btn-ghost { border: 2px solid var(--blue); color: var(--blue); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; transition: all 0.25s; }
+  .btn-ghost:hover { background: var(--blue); color: white; }
+
+  .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: white; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; transition: all 0.25s; }
+  .btn-gold:hover { box-shadow: 0 8px 30px rgba(200,146,42,0.4); transform: translateY(-1px); }
+
+  .btn-white { background: white; color: var(--navy); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; transition: all 0.25s; }
+  .btn-white:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.2); transform: translateY(-1px); }
+
+  .marquee-track { display: flex; gap: 2.5rem; animation: marquee 28s linear infinite; white-space: nowrap; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  .process-step { border-left: 2px solid rgba(30,95,168,0.2); transition: border-color 0.3s; }
+  .process-step:hover { border-color: var(--blue); }
+
+  .pill { background: var(--light); border: 1px solid rgba(30,95,168,0.18); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--navy); transition: all 0.2s; }
+  .pill:hover { background: var(--blue); border-color: var(--blue); color: white; }
+
+  .badge { background: rgba(30,95,168,0.1); border: 1px solid rgba(30,95,168,0.25); color: var(--blue); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; }
+
+  .section-dark { background: var(--navy); }
+  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue); }
+
+  .icon-circle { width: 48px; height: 48px; border-radius: 50%; background: var(--light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .icon-circle-gold { width: 48px; height: 48px; border-radius: 50%; background: rgba(200,146,42,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+  .fade-up { animation: fadeUp 0.7s ease forwards; }
+  .d1 { animation-delay:.1s; opacity:0; } .d2 { animation-delay:.25s; opacity:0; } .d3 { animation-delay:.4s; opacity:0; } .d4 { animation-delay:.55s; opacity:0; }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--light); }
+  ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+
+  .divider-gold { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.3; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div style="background:var(--navy);" class="py-2 px-4 text-center">
+  <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.15em; color:rgba(255,255,255,0.6);">
+    PRIVATE EQUITY &nbsp;·&nbsp; MANUFACTURING FOCUS &nbsp;·&nbsp; UNITED STATES
+  </span>
+</div>
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 px-6 lg:px-12 py-4">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <!-- Logo mark -->
+      <div style="position:relative; width:42px; height:42px; border-radius:9px; background:linear-gradient(145deg, var(--navy) 0%, var(--blue) 100%); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(30,95,168,0.35), 0 0 0 1px rgba(30,95,168,0.25); flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ascending bars -->
+          <rect x="2" y="14" width="4" height="6" rx="1" fill="rgba(255,255,255,0.45)"/>
+          <rect x="8" y="9" width="4" height="11" rx="1" fill="rgba(255,255,255,0.7)"/>
+          <rect x="14" y="4" width="4" height="16" rx="1" fill="#E8B84B"/>
+        </svg>
+      </div>
+      <!-- Wordmark -->
+      <div style="line-height:1;">
+        <div style="font-family:'Bebas Neue',cursive; font-size:1.65rem; letter-spacing:0.06em; line-height:1;">
+          <span style="color:var(--gold);">DEL</span><span style="color:var(--navy);">CAM</span>
+        </div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:0.6rem; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--mid); margin-top:-2px;">CAPITAL</div>
+      </div>
+    </div>
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="#" class="text-sm font-medium transition-colors" style="color:var(--mid);" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--mid)'">Portfolio</a>
+      <a href="#" class="text-sm font-medium transition-colors" style="color:var(--mid);" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--mid)'">Strategy</a>
+      <a href="#" class="text-sm font-medium transition-colors" style="color:var(--mid);" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--mid)'">Team</a>
+      <a href="#" class="text-sm font-medium transition-colors" style="color:var(--mid);" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--mid)'">News</a>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="#" class="hidden md:flex items-center gap-2 text-sm font-semibold" style="color:var(--navy);">
+        <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        Contact Us
+      </a>
+      <a href="#" class="btn-gold text-xs px-5 py-2.5 rounded-md">Investor Relations</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-bg hero-grid relative flex items-center overflow-hidden" style="max-height:75vh; min-height:480px;">
+  <div class="absolute right-0 top-1/4 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle, rgba(200,146,42,0.1) 0%, transparent 70%); filter:blur(60px);"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full py-12">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div class="fade-up d1">
+        <p class="section-label mb-4 fade-up d1">// Private Equity</p>
+        <h1 class="mb-4 fade-up d2" style="font-family:'Bebas Neue',cursive; font-size:clamp(2.8rem,7vw,6rem); color:var(--navy); line-height:0.95;">Building Enduring<br>Manufacturing Value.</h1>
+        <h2 class="mb-8 fade-up d3" style="font-size:clamp(1rem,2vw,1.25rem); font-weight:400; color:var(--mid); line-height:1.5;">Long-term capital partnerships with precision manufacturers across the United States</h2>
+        <div class="flex gap-4 flex-wrap fade-up d4">
+          <a href="#" class="btn-primary px-8 py-3.5 rounded-md text-sm inline-block">Our Strategy</a>
+          <a href="#" class="btn-ghost px-8 py-3.5 rounded-md text-sm inline-block">View Portfolio</a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="card card-gold p-6 rounded-xl">
+          <div class="stat-number gold">$2B+</div>
+          <div class="accent-line-gold my-3"></div>
+          <p class="font-semibold text-sm" style="color:var(--navy);">Assets Under Management</p>
+          <p class="text-xs mt-1" style="color:var(--mid);">Deployed across platform companies</p>
+        </div>
+        <div class="card p-6 rounded-xl">
+          <div class="stat-number">30+</div>
+          <div class="accent-line my-3"></div>
+          <p class="font-semibold text-sm" style="color:var(--navy);">Portfolio Companies</p>
+          <p class="text-xs mt-1" style="color:var(--mid);">Precision manufacturing focus</p>
+        </div>
+        <div class="card p-6 rounded-xl">
+          <div class="stat-number">25+</div>
+          <div class="accent-line my-3"></div>
+          <p class="font-semibold text-sm" style="color:var(--navy);">Years of Experience</p>
+          <p class="text-xs mt-1" style="color:var(--mid);">Investing in manufacturing since 1998</p>
+        </div>
+        <div class="card p-6 rounded-xl" style="border-color:rgba(30,95,168,0.35); background:rgba(30,95,168,0.04);">
+          <div class="stat-number">100%</div>
+          <div class="accent-line my-3"></div>
+          <p class="font-semibold text-sm" style="color:var(--navy);">Made in America</p>
+          <p class="text-xs mt-1" style="color:var(--mid);">Domestic manufacturing portfolio</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO COMPANIES MARQUEE -->
+<div class="py-4 overflow-hidden" style="background:var(--navy);">
+  <div class="marquee-track" style="color:rgba(255,255,255,0.4);">
+    <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.15em;">PLASTECH MACHINING</span><span style="color:var(--gold);">✦</span>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.15em;">NEFM</span><span style="color:var(--gold);">✦</span>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.15em;">PLASTECH MOLDING</span><span style="color:var(--gold);">✦</span>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.15em;">DIAMOND DOG</span><span style="color:var(--gold);">✦</span>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.15em;">PRECISION PLASTICS</span><span style="color:var(--gold);">✦</span>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.15em;">AEROSPACE FABRICATION</span><span style="color:var(--gold);">✦</span>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.15em;">COMPOSITE SYSTEMS</span><span style="color:var(--gold);">✦</span>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.15em;">PLASTECH MACHINING</span><span style="color:var(--gold);">✦</span>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.15em;">NEFM</span><span style="color:var(--gold);">✦</span>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.15em;">PLASTECH MOLDING</span><span style="color:var(--gold);">✦</span>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.15em;">DIAMOND DOG</span><span style="color:var(--gold);">✦</span>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.15em;">PRECISION PLASTICS</span><span style="color:var(--gold);">✦</span>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.15em;">AEROSPACE FABRICATION</span><span style="color:var(--gold);">✦</span>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.15em;">COMPOSITE SYSTEMS</span><span style="color:var(--gold);">✦</span>
+  </div>
+</div>
+
+<!-- INVESTMENT STRATEGY -->
+<section class="py-28 px-6 lg:px-12 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-8">
+      <div>
+        <p class="section-label mb-4">// Investment Focus</p>
+        <h2 style="font-family:'Bebas Neue',cursive; font-size:clamp(3rem,7vw,5.5rem); color:var(--navy); line-height:0.93;">OUR<br>STRATEGY</h2>
+      </div>
+      <p class="text-sm max-w-xs leading-relaxed" style="color:var(--mid);">
+        We acquire and build leading precision manufacturing businesses — partnering with management teams to drive sustainable, long-term growth.
+      </p>
+    </div>
+
+    <!-- Strategy image banner -->
+    <div class="rounded-2xl overflow-hidden mb-12 relative" style="height:280px;">
+      <div class="w-full h-full" style="background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);"></div>
+      <div class="absolute inset-0 pointer-events-none" style="background-image:linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size:48px 48px;"></div>
+      <div class="absolute inset-0 flex items-end p-8" style="background:linear-gradient(to right, rgba(11,37,69,0.85) 0%, transparent 70%);">
+        <div>
+          <span class="badge px-3 py-1.5 rounded text-xs mb-3 inline-block">PLATFORM STRATEGY</span>
+          <p style="font-family:'Bebas Neue',cursive; font-size:2rem; color:white; line-height:1;">Acquire. Operate. Grow.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <div class="card p-8 rounded-xl">
+        <div class="icon-circle mb-6">
+          <svg width="22" height="22" fill="none" stroke="var(--blue)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        </div>
+        <h3 style="font-family:'Bebas Neue',cursive; font-size:1.5rem; color:var(--navy);" class="mb-3">Platform Acquisitions</h3>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--mid);">We target founder-owned precision manufacturers with $5M–$50M EBITDA, building regional and national platforms through add-on acquisitions.</p>
+        <a href="#" style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--blue);">Learn more →</a>
+      </div>
+
+      <div class="card p-8 rounded-xl">
+        <div class="icon-circle mb-6">
+          <svg width="22" height="22" fill="none" stroke="var(--blue)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+        </div>
+        <h3 style="font-family:'Bebas Neue',cursive; font-size:1.5rem; color:var(--navy);" class="mb-3">Operational Excellence</h3>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--mid);">Our operating partners embed within portfolio companies to implement lean manufacturing, ERP systems, and workforce development programs.</p>
+        <a href="#" style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--blue);">Learn more →</a>
+      </div>
+
+      <div class="card p-8 rounded-xl">
+        <div class="icon-circle mb-6">
+          <svg width="22" height="22" fill="none" stroke="var(--blue)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 style="font-family:'Bebas Neue',cursive; font-size:1.5rem; color:var(--navy);" class="mb-3">Management Partnerships</h3>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--mid);">We back strong management teams with meaningful equity, aligning incentives for long-term value creation alongside our capital.</p>
+        <a href="#" style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--blue);">Learn more →</a>
+      </div>
+
+      <div class="card p-8 rounded-xl">
+        <div class="icon-circle mb-6">
+          <svg width="22" height="22" fill="none" stroke="var(--blue)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+        </div>
+        <h3 style="font-family:'Bebas Neue',cursive; font-size:1.5rem; color:var(--navy);" class="mb-3">Technology Modernization</h3>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--mid);">Capital investment in advanced CNC, robotics, and automation to increase throughput, reduce costs, and capture higher-value work.</p>
+        <a href="#" style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--blue);">Learn more →</a>
+      </div>
+
+      <div class="card p-8 rounded-xl">
+        <div class="icon-circle mb-6">
+          <svg width="22" height="22" fill="none" stroke="var(--blue)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 style="font-family:'Bebas Neue',cursive; font-size:1.5rem; color:var(--navy);" class="mb-3">Geographic Expansion</h3>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--mid);">Building regional density in key manufacturing corridors to share back-office resources, purchasing leverage, and customer relationships.</p>
+        <a href="#" style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--blue);">Learn more →</a>
+      </div>
+
+      <!-- CTA card -->
+      <div class="p-8 rounded-xl flex flex-col justify-between" style="background:linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);">
+        <div>
+          <p style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:rgba(255,255,255,0.5);" class="mb-3">SELL YOUR COMPANY</p>
+          <h3 style="font-family:'Bebas Neue',cursive; font-size:2rem; color:white;" class="mb-4">Ready to explore a partnership?</h3>
+          <p class="text-sm text-white leading-relaxed" style="opacity:0.75;">We provide confidential, straightforward conversations for owners considering their next chapter.</p>
+        </div>
+        <a href="#" class="btn-gold mt-8 text-xs px-6 py-3 rounded-md inline-block text-center">Start a Conversation →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS / APPROACH -->
+<section class="section-dark py-28 px-6 lg:px-12 relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background-image:linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size:50px 50px;"></div>
+  <div class="absolute right-0 top-0 w-96 h-96 pointer-events-none" style="background:radial-gradient(circle, rgba(200,146,42,0.12) 0%, transparent 70%); filter:blur(60px);"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="grid lg:grid-cols-2 gap-20 items-center">
+      <div class="flex flex-col gap-8">
+        <div>
+          <p class="section-label mb-4" style="color:rgba(200,146,42,0.9);">// Our Approach</p>
+          <h2 style="font-family:'Bebas Neue',cursive; font-size:clamp(3rem,7vw,5.5rem); color:white; line-height:0.93;" class="mb-6">FROM FIRST CALL<br>TO CLOSE.</h2>
+          <p class="text-sm leading-relaxed max-w-sm" style="color:rgba(255,255,255,0.45);">
+            We move with certainty and respect your time. No re-trades, no surprises. Our process reflects how we will operate as your partner.
+          </p>
+        </div>
+        <div class="rounded-xl overflow-hidden" style="height:220px; background:linear-gradient(135deg, rgba(30,95,168,0.3), rgba(11,37,69,0.8)); position:relative;">
+          <div class="absolute inset-0 pointer-events-none" style="background-image:linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size:30px 30px;"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center">
+              <div style="font-family:'Bebas Neue',cursive; font-size:3.5rem; color:var(--gold); line-height:1;">60–90</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.2em; color:rgba(255,255,255,0.5);">DAYS TO CLOSE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <div class="process-step pl-8 pb-10" style="border-color:rgba(200,146,42,0.3);">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--gold);" class="mb-2 block">01</span>
+          <h4 style="font-family:'Bebas Neue',cursive; font-size:1.4rem; color:white;" class="mb-2">Introductory Conversation</h4>
+          <p class="text-sm" style="color:rgba(255,255,255,0.45);">A confidential, no-pressure discussion about your business, your goals, and whether we're the right fit. We listen first.</p>
+        </div>
+        <div class="process-step pl-8 pb-10" style="border-color:rgba(200,146,42,0.3);">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--gold);" class="mb-2 block">02</span>
+          <h4 style="font-family:'Bebas Neue',cursive; font-size:1.4rem; color:white;" class="mb-2">Indication of Interest</h4>
+          <p class="text-sm" style="color:rgba(255,255,255,0.45);">A non-binding letter outlining valuation range and deal structure within 2–3 weeks of receiving financials. No delays, no games.</p>
+        </div>
+        <div class="process-step pl-8 pb-10" style="border-color:rgba(200,146,42,0.3);">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--gold);" class="mb-2 block">03</span>
+          <h4 style="font-family:'Bebas Neue',cursive; font-size:1.4rem; color:white;" class="mb-2">Diligence & LOI</h4>
+          <p class="text-sm" style="color:rgba(255,255,255,0.45);">Focused, efficient due diligence with a dedicated team. We aim to be respectful of your time and management bandwidth.</p>
+        </div>
+        <div class="process-step pl-8" style="border-color:rgba(200,146,42,0.3);">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--gold);" class="mb-2 block">04</span>
+          <h4 style="font-family:'Bebas Neue',cursive; font-size:1.4rem; color:white;" class="mb-2">Close & Partnership</h4>
+          <p class="text-sm" style="color:rgba(255,255,255,0.45);">We close on time, every time. Day one begins a partnership built on trust, transparency, and shared upside.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="py-28 px-6 lg:px-12" style="background:var(--light);">
+  <div class="max-w-7xl mx-auto text-center">
+    <p class="section-label mb-4">// Target Sectors</p>
+    <h2 style="font-family:'Bebas Neue',cursive; font-size:clamp(3rem,7vw,5.5rem); color:var(--navy); line-height:0.93;" class="mb-12">WE INVEST IN<br>CRITICAL MANUFACTURING.</h2>
+    <div class="flex flex-wrap gap-3 justify-center mb-16">
+      <span class="pill px-5 py-2.5 rounded-full cursor-pointer">Precision Machining</span>
+      <span class="pill px-5 py-2.5 rounded-full cursor-pointer">Plastics Fabrication</span>
+      <span class="pill px-5 py-2.5 rounded-full cursor-pointer">Metal Forming</span>
+      <span class="pill px-5 py-2.5 rounded-full cursor-pointer">Aerospace Components</span>
+      <span class="pill px-5 py-2.5 rounded-full cursor-pointer">Medical Device Manufacturing</span>
+      <span class="pill px-5 py-2.5 rounded-full cursor-pointer">Defense Supply Chain</span>
+      <span class="pill px-5 py-2.5 rounded-full cursor-pointer">Electronics Assembly</span>
+      <span class="pill px-5 py-2.5 rounded-full cursor-pointer">Industrial Automation</span>
+      <span class="pill px-5 py-2.5 rounded-full cursor-pointer">Specialty Coatings</span>
+      <span class="pill px-5 py-2.5 rounded-full cursor-pointer">Composite Materials</span>
+    </div>
+
+    <!-- Stats row -->
+    <div class="grid md:grid-cols-3 gap-6 mt-4">
+      <div class="card p-8 rounded-xl text-center">
+        <div class="stat-number gold text-center" style="justify-content:center;">$5M</div>
+        <div class="accent-line-gold my-3 mx-auto"></div>
+        <p class="font-semibold text-sm" style="color:var(--navy);">Minimum EBITDA</p>
+        <p class="text-xs mt-1" style="color:var(--mid);">Target company size for platform acquisitions</p>
+      </div>
+      <div class="card p-8 rounded-xl text-center">
+        <div class="stat-number text-center" style="justify-content:center;">NE / SE</div>
+        <div class="accent-line my-3 mx-auto"></div>
+        <p class="font-semibold text-sm" style="color:var(--navy);">Primary Geographies</p>
+        <p class="text-xs mt-1" style="color:var(--mid);">Northeast and Southeast United States</p>
+      </div>
+      <div class="card p-8 rounded-xl text-center">
+        <div class="stat-number gold text-center" style="justify-content:center;">3–7X</div>
+        <div class="accent-line-gold my-3 mx-auto"></div>
+        <p class="font-semibold text-sm" style="color:var(--navy);">Hold Period (Years)</p>
+        <p class="text-xs mt-1" style="color:var(--mid);">Long-term orientation, not a quick flip</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="relative overflow-hidden py-24 px-6 lg:px-12">
+  <div class="absolute inset-0" style="background:linear-gradient(135deg, rgba(10,30,53,0.98) 0%, rgba(11,37,69,0.95) 60%, rgba(30,95,168,0.9) 100%);"></div>
+  <div class="absolute inset-0 pointer-events-none" style="background-image:linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size:48px 48px;"></div>
+  <div class="absolute top-0 right-0 w-96 h-96 pointer-events-none" style="background:radial-gradient(circle, rgba(200,146,42,0.2) 0%, transparent 70%); filter:blur(80px);"></div>
+  <div class="max-w-7xl mx-auto relative text-center">
+    <p style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.2em; color:var(--gold); opacity:0.9;" class="mb-6">// FOR BUSINESS OWNERS</p>
+    <h2 class="text-white mb-6" style="font-family:'Bebas Neue',cursive; font-size:clamp(3.5rem,10vw,8rem); line-height:0.9;">
+      IS IT TIME<br>TO TALK?
+    </h2>
+    <p class="text-white mb-10 text-base max-w-md mx-auto leading-relaxed" style="opacity:0.65;">
+      Whether you're thinking about retirement, bringing on a growth partner, or just exploring options — we're a straightforward call. Confidential and obligation-free.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#" class="btn-gold text-sm px-10 py-4 rounded-md">Schedule a Conversation</a>
+      <a href="#" class="text-white text-sm font-semibold px-10 py-4 rounded-md transition-all" style="border:2px solid rgba(255,255,255,0.3); letter-spacing:0.04em; text-transform:uppercase;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+        View Our Portfolio
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-16 px-6 lg:px-12" style="background:var(--dark);">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-12 mb-12">
+      <div>
+        <div style="font-family:'Bebas Neue',cursive; font-size:1.75rem; letter-spacing:0.05em;" class="mb-1">
+          <span style="color:var(--gold);">DEL</span><span style="color:rgba(255,255,255,0.9);">CAM</span>
+        </div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:0.6rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.3);" class="mb-5">CAPITAL</div>
+        <p class="text-sm leading-relaxed mb-6" style="color:rgba(255,255,255,0.35);">
+          Private equity focused on precision manufacturing.<br><br>
+          New Hampshire, USA
+        </p>
+        <div class="flex gap-2 mb-5">
+          <span style="background:rgba(200,146,42,0.15); border:1px solid rgba(200,146,42,0.3); color:var(--gold); font-family:'JetBrains Mono',monospace; font-size:0.65rem;" class="px-2 py-1 rounded">PE</span>
+          <span style="background:rgba(30,95,168,0.2); border:1px solid rgba(30,95,168,0.3); color:var(--accent); font-family:'JetBrains Mono',monospace; font-size:0.65rem;" class="px-2 py-1 rounded">MFG</span>
+          <span style="background:rgba(30,95,168,0.2); border:1px solid rgba(30,95,168,0.3); color:var(--accent); font-family:'JetBrains Mono',monospace; font-size:0.65rem;" class="px-2 py-1 rounded">USA</span>
+        </div>
+      </div>
+      <div>
+        <p style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold);" class="mb-5 uppercase">Strategy</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="text-sm" style="color:rgba(255,255,255,0.35);">Platform Acquisitions</a></li>
+          <li><a href="#" class="text-sm" style="color:rgba(255,255,255,0.35);">Operational Excellence</a></li>
+          <li><a href="#" class="text-sm" style="color:rgba(255,255,255,0.35);">Management Partnerships</a></li>
+          <li><a href="#" class="text-sm" style="color:rgba(255,255,255,0.35);">Technology Investment</a></li>
+          <li><a href="#" class="text-sm" style="color:rgba(255,255,255,0.35);">Geographic Expansion</a></li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold);" class="mb-5 uppercase">Portfolio</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="text-sm" style="color:rgba(255,255,255,0.35);">PlasTech Machining</a></li>
+          <li><a href="#" class="text-sm" style="color:rgba(255,255,255,0.35);">NEFM</a></li>
+          <li><a href="#" class="text-sm" style="color:rgba(255,255,255,0.35);">PlasTech Molding</a></li>
+          <li><a href="#" class="text-sm" style="color:rgba(255,255,255,0.35);">View All Companies →</a></li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; letter-spacing:0.15em; color:var(--gold);" class="mb-5 uppercase">Contact</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="text-sm" style="color:rgba(255,255,255,0.35);">Investor Relations</a></li>
+          <li><a href="#" class="text-sm" style="color:rgba(255,255,255,0.35);">Acquisition Inquiries</a></li>
+          <li><a href="#" class="text-sm" style="color:rgba(255,255,255,0.35);">Careers</a></li>
+          <li><a href="#" class="text-sm" style="color:rgba(255,255,255,0.35);">Media & Press</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-6" style="border-top:1px solid rgba(255,255,255,0.07);">
+      <p style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:rgba(255,255,255,0.2);">© 2026 DelCam Capital. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <p style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:rgba(255,255,255,0.2);">Associated DelCam Manufacturing Companies</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

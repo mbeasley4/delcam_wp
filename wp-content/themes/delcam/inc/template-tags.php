@@ -27,11 +27,11 @@ if ( ! function_exists( 'delcam_posted_on' ) ) :
 
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( 'Posted on %s', 'post date', 'delcam' ), $time_string 
+			esc_html_x( 'Posted on %s', 'post date', 'delcam' ),
+			$time_string
 		);
 
 		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
 	}
 endif;
 
@@ -47,7 +47,6 @@ if ( ! function_exists( 'delcam_posted_by' ) ) :
 		);
 
 		echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
 	}
 endif;
 
@@ -127,13 +126,13 @@ if ( ! function_exists( 'delcam_post_thumbnail' ) ) :
 			?>
 
 <div class="post-thumbnail">
-    <?php the_post_thumbnail(); ?>
+			<?php the_post_thumbnail(); ?>
 </div><!-- .post-thumbnail -->
 
 <?php else : ?>
 
 <a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-    <?php
+	<?php
 					the_post_thumbnail(
 						'post-thumbnail',
 						array(
@@ -144,10 +143,10 @@ if ( ! function_exists( 'delcam_post_thumbnail' ) ) :
 							),
 						)
 					);
-				?>
+	?>
 </a>
 
-<?php
+	<?php
 		endif; // End is_singular().
 	}
 endif;

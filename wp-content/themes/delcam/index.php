@@ -1,77 +1,85 @@
 <?php
 /**
- * The main template file
+ * The main template file — Blog / Insights archive.
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * ACF Options fields used:
+ *   insights_headline (text)    — hero heading, bracket notation supported
+ *   insights_content  (textarea)— optional subhead
  *
  * @package DelCam_Capital
  */
-global $wp_query;
+
 get_header();
+
+$headline = ! empty( get_field( 'insights_headline', 'options' ) ) ? get_field( 'insights_headline', 'options' ) : 'INSIGHTS &[br]PERSPECTIVES';
+$subhead  = ! empty( get_field( 'insights_content', 'options' ) )  ? get_field( 'insights_content', 'options' )  : 'Analysis, perspectives, and firm updates from the DelCam Capital team.';
 ?>
 
 <main id="primary" class="site-main">
-    <?php
-    $image = !empty(get_field('insights_background_image', 'options')) ? get_field('insights_background_image', 'options') : [];
-$headline = !empty(get_field('insights_headline', 'options')) ? get_field('insights_headline', 'options') : '';
-$content = !empty(get_field('insights_content', 'options')) ? get_field('insights_content', 'options') : '';
-$content = wpautop($content);
-$content = preg_replace(
-    '/<p([^>]*)>/',
-    '<p$1 data-aos="fade-zoom-in" data-aos-duration="3000" data-aos-delay="200">',
-    $content
-);
 
-$style = '';
-if (!empty($image)) {
-    $style = ' style="background-image: url('.$image['url'].');"';
-}
+	<!-- ── Hero ──────────────────────────────────────────────────────── -->
+	<section class="section-dark relative overflow-hidden py-24 lg:py-32 px-6 lg:px-12" style="min-height:340px;">
 
-?>
-    <section class="interior-hero" <?php echo $style;?>>
-        <div class="interior-hero__content">
-            <h1 class="interior-hero__title" data-aos="fade-zoom-in" data-aos-duration="3000" data-aos-delay="200">
-                <?php echo formatHeadline($headline);?></h1>
-            <?php if (!empty($content)):?>
-            <?php echo $content;?>
-            <?php endif; ?>
-        </div>
-    </section>
-    <section class="grid-list posts">
-        <div class="container">
-            <?php
-        $i = 0;
-while (have_posts()) :
+		<div class="absolute inset-0 pointer-events-none grid-overlay" aria-hidden="true"></div>
 
-    $post_count   = $wp_query->post_count;
+		<div class="absolute -left-24 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full pointer-events-none"
+			style="background:radial-gradient(circle,rgba(30,95,168,0.18) 0%,transparent 70%);filter:blur(60px);" aria-hidden="true"></div>
 
-    the_post();
-    $i++;
+		<div class="absolute top-0 right-0 w-72 h-72 pointer-events-none glow-gold-lg" aria-hidden="true"></div>
 
-    // Decide the layout slot for each post
-    $layout = ($i === 1) ? 'is-featured' : (($i <= 4) ? 'is-rail' : 'is-standard');
+		<div class="max-w-7xl mx-auto relative z-10">
+			<p class="section-label mb-4 fade-up d1">// Insights &amp; Perspectives</p>
+			<h1 class="heading-display-dark mb-6 fade-up d2" style="font-size:clamp(3rem,8vw,6.5rem);">
+				<?php echo wp_kses_post( format_headline( $headline ) ); ?>
+			</h1>
+			<div class="accent-line-gold mb-6 fade-up d3"></div>
+			<?php if ( ! empty( $subhead ) ) : ?>
+				<div class="fade-up d4" style="max-width:55ch;color:rgba(255,255,255,0.6);font-size:1.05rem;line-height:1.7;">
+					<?php echo $subhead; ?>
+				</div>
+			<?php endif; ?>
+		</div>
+	</section>
 
-    // Make the layout available inside the template part
-    set_query_var('grid_layout_class', $layout);
-    if ($i === 2):?>
-            <div class="is-rail">
-                <?php endif;
-    get_template_part('template-parts/content', 'post');
-    if ($i === 4 || $i === $post_count):?>
-            </div>
-            <?php endif;
-endwhile;
+	<!-- ── Posts Grid ────────────────────────────────────────────────── -->
+	<section class="bg-white py-20 px-6 lg:px-12">
+		<div class="max-w-7xl mx-auto">
 
-the_posts_navigation();
-?>
-        </div>
-    </section>
-</main><!-- #main -->
+			<?php if ( have_posts() ) : ?>
 
-<?php
-get_footer();
+				<div class="news-archive-grid">
+					<?php while ( have_posts() ) : the_post(); ?>
+						<?php get_template_part( 'template-parts/content', 'post' ); ?>
+					<?php endwhile; ?>
+				</div>
+
+				<!-- Pagination -->
+				<nav class="news-pagination" aria-label="Posts pages">
+					<?php
+					echo wp_kses_post(
+						paginate_links(
+							array(
+								'prev_text' => '&larr; Newer',
+								'next_text' => 'Older &rarr;',
+								'type'      => 'list',
+							)
+						)
+					);
+					?>
+				</nav>
+
+			<?php else : ?>
+
+				<div class="text-center py-24">
+					<p class="section-label mb-4">// No results</p>
+					<p class="text-mid">No posts have been published yet. Check back soon.</p>
+				</div>
+
+			<?php endif; ?>
+
+		</div>
+	</section>
+
+</main>
+
+<?php get_footer(); ?>
