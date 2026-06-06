@@ -1013,7 +1013,8 @@ add_filter( 'the_content', 'remove_empty_p', 20 );
 // overriding any drag-and-drop ordering from the Post Types Order plugin.
 add_action( 'pre_get_posts', function ( WP_Query $query ) {
 	if ( ! is_admin() && $query->is_main_query() && $query->is_post_type_archive( 'press_mentions' ) ) {
-		$query->set( 'orderby', 'date' );
+		$query->set( 'meta_key', 'press_date' );
+		$query->set( 'orderby', 'meta_value' );
 		$query->set( 'order', 'DESC' );
 		$query->set( 'ignore_custom_sort', true );
 	}

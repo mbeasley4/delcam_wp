@@ -27,12 +27,13 @@ $s       = delcam_scheme( $dark_bg );
 
 // Build query — filter by news_type if a slug is provided.
 $query_args = array(
-	'post_type'           => 'press_mentions',
-	'posts_per_page'      => $posts_per_page,
-	'post_status'         => 'publish',
-	'orderby'             => 'date',
-	'order'               => 'DESC',
-	'ignore_custom_sort'  => true,
+	'post_type'          => 'press_mentions',
+	'posts_per_page'     => $posts_per_page,
+	'post_status'        => 'publish',
+	'meta_key'           => 'press_date',
+	'orderby'            => 'meta_value',
+	'order'              => 'DESC',
+	'ignore_custom_sort' => true,
 );
 
 if ( $news_type_slug !== '' ) {
