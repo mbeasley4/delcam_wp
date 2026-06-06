@@ -30,7 +30,7 @@ endwhile;
 		<div class="absolute inset-0 pointer-events-none grid-overlay" aria-hidden="true"></div>
 		<div class="absolute top-0 right-0 w-72 h-72 pointer-events-none glow-gold-lg" aria-hidden="true"></div>
 
-		<div class="w-full max-w-4xl mx-auto relative z-10">
+		<div class="w-full max-w-7xl mx-auto relative z-10">
 
 			<a href="/press-releases/" class="inline-flex items-center gap-2 mb-8 fade-up d1"
 				style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.2s;"
@@ -49,7 +49,7 @@ endwhile;
 			</div>
 			<?php endif; ?>
 
-			<h1 class="heading-display-dark fade-up d3" style="font-size:clamp(2rem,5vw,3.5rem); max-width:20ch;">
+			<h1 class="heading-display-dark fade-up d3" style="font-size:clamp(2rem,5vw,3.5rem);">
 				<?php the_title(); ?>
 			</h1>
 			<div class="accent-line-gold my-5 fade-up d4"></div>
