@@ -7,6 +7,23 @@
   "scripts": {
     "build:css": "postcss src/css/main.css -o dist/delcam.css",
     "watch:css": "postcss src/css/main.css -o dist/delcam.css --watch",
+    "build:blocks": "wp-scripts build blocks/large-text-callout/src/index.js --output-path=blocks/large-text-callout/build && wp-scripts build blocks/basic/src/index.js --output-path=blocks/basic/build && wp-scripts build blocks/content-image/src/index.js --output-path=blocks/content-image/build && wp-scripts build blocks/team-members/src/index.js --output-path=blocks/team-members/build && wp-scripts build blocks/firm-values/src/index.js --output-path=blocks/firm-values/build && wp-scripts build blocks/funds-overview/src/index.js --output-path=blocks/funds-overview/build && wp-scripts build blocks/content-3-blocks/src/index.js --output-path=blocks/content-3-blocks/build && wp-scripts build blocks/company-portfolio/src/index.js --output-path=blocks/company-portfolio/build && wp-scripts build blocks/company-portfolio-selected/src/index.js --output-path=blocks/company-portfolio-selected/build && wp-scripts build blocks/interior-page-hero/src/index.js --output-path=blocks/interior-page-hero/build && wp-scripts build blocks/highlighted-boxes/src/index.js --output-path=blocks/highlighted-boxes/build && wp-scripts build blocks/sectors/src/index.js --output-path=blocks/sectors/build && wp-scripts build blocks/vertical-blocks/src/index.js --output-path=blocks/vertical-blocks/build && wp-scripts build blocks/homepage-hero/src/index.js --output-path=blocks/homepage-hero/build && wp-scripts build blocks/portfolio-marquee/src/index.js --output-path=blocks/portfolio-marquee/build && wp-scripts build blocks/investment-strategy/src/index.js --output-path=blocks/investment-strategy/build && wp-scripts build blocks/news-feed/src/index.js --output-path=blocks/news-feed/build",
+    "build:firm-values": "wp-scripts build blocks/firm-values/src/index.js --output-path=blocks/firm-values/build",
+    "build:funds-overview": "wp-scripts build blocks/funds-overview/src/index.js --output-path=blocks/funds-overview/build",
+    "build:content-3-blocks": "wp-scripts build blocks/content-3-blocks/src/index.js --output-path=blocks/content-3-blocks/build",
+    "build:company-portfolio": "wp-scripts build blocks/company-portfolio/src/index.js --output-path=blocks/company-portfolio/build",
+    "build:company-portfolio-selected": "wp-scripts build blocks/company-portfolio-selected/src/index.js --output-path=blocks/company-portfolio-selected/build",
+    "build:interior-page-hero": "wp-scripts build blocks/interior-page-hero/src/index.js --output-path=blocks/interior-page-hero/build",
+    "build:highlighted-boxes": "wp-scripts build blocks/highlighted-boxes/src/index.js --output-path=blocks/highlighted-boxes/build",
+    "build:sectors": "wp-scripts build blocks/sectors/src/index.js --output-path=blocks/sectors/build",
+    "build:vertical-blocks": "wp-scripts build blocks/vertical-blocks/src/index.js --output-path=blocks/vertical-blocks/build",
+    "build:homepage-hero": "wp-scripts build blocks/homepage-hero/src/index.js --output-path=blocks/homepage-hero/build",
+    "build:portfolio-marquee": "wp-scripts build blocks/portfolio-marquee/src/index.js --output-path=blocks/portfolio-marquee/build",
+    "build:investment-strategy": "wp-scripts build blocks/investment-strategy/src/index.js --output-path=blocks/investment-strategy/build",
+    "build:news-feed": "wp-scripts build blocks/news-feed/src/index.js --output-path=blocks/news-feed/build",
+    "build:prose-content": "wp-scripts build blocks/prose-content/src/index.js --output-path=blocks/prose-content/build",
+    "build:basic": "wp-scripts build blocks/basic/src/index.js --output-path=blocks/basic/build",
+    "watch:blocks": "wp-scripts start blocks/large-text-callout/src/index.js --output-path=blocks/large-text-callout/build",
     "lint:js": "wp-scripts lint-js 'js/*.js'"
   },
   "devDependencies": {
@@ -15,5 +32,8 @@
     "postcss": "^8.5.3",
     "postcss-cli": "^11.0.1",
     "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.19"
   }
 }

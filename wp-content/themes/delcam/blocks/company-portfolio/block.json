@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/company-portfolio",
+  "title": "DelCam: Company Portfolio",
+  "category": "delcam",
+  "description": "Displays all portfolio companies in a card grid pulled from the portfolio CPT.",
+  "keywords": [
+    "delcam",
+    "portfolio",
+    "companies",
+    "investments"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": "// Our Companies"
+    },
+    "sectionHeadline": {
+      "type": "string",
+      "default": "OUR PORTFOLIO"
+    },
+    "description": {
+      "type": "string",
+      "default": "Precision manufacturing businesses we've acquired and partnered with across the Northeast and Southeast."
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/news-feed",
+  "title": "DelCam: News Feed",
+  "category": "delcam",
+  "description": "Displays press_mentions posts, optionally filtered by a news_type term slug. Empty state shows a 'Check back soon' message.",
+  "keywords": ["delcam", "news", "press", "releases", "feed"],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": "// News & Press"
+    },
+    "sectionHeadline": {
+      "type": "string",
+      "default": "NEWS &\nPRESS"
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "newsTypeSlug": {
+      "type": "string",
+      "default": ""
+    },
+    "postsPerPage": {
+      "type": "number",
+      "default": 9
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/company-portfolio-selected",
+  "title": "DelCam: Selected Company Portfolio",
+  "category": "delcam",
+  "description": "Features hand-picked portfolio companies. Select companies by post ID directly in the block.",
+  "keywords": [
+    "delcam",
+    "portfolio",
+    "featured",
+    "companies",
+    "selected"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": "// Featured Companies"
+    },
+    "sectionHeadline": {
+      "type": "string",
+      "default": "FROM OUR\nPORTFOLIO"
+    },
+    "description": {
+      "type": "string",
+      "default": "A selection of the precision manufacturing businesses we've partnered with."
+    },
+    "limit": {
+      "type": "number",
+      "default": 3
+    },
+    "ctaButtonText": {
+      "type": "string",
+      "default": "View All Companies →"
+    },
+    "ctaButtonUrl": {
+      "type": "string",
+      "default": "/portfolio/"
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": false
+    },
+    "selectedPostIds": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "number"
+      }
+    }
+  }
+}

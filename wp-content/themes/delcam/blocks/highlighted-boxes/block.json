@@ -1,0 +1,68 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/highlighted-boxes",
+  "title": "DelCam: Highlighted Boxes",
+  "category": "delcam",
+  "description": "Section with a heading and a card grid. Cards managed directly in the block.",
+  "keywords": [
+    "delcam",
+    "highlights",
+    "boxes",
+    "cards",
+    "features"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": "// Why DelCam"
+    },
+    "headline": {
+      "type": "string",
+      "default": "THE DELCAM\nDIFFERENCE."
+    },
+    "content": {
+      "type": "string",
+      "default": ""
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": false
+    },
+    "highlights": {
+      "type": "array",
+      "default": [
+        {
+          "headline": "Operator-Led",
+          "content": "Our partners have run manufacturing businesses — not just invested in them. We understand the shop floor, the customer relationships, and the operational levers that matter."
+        },
+        {
+          "headline": "No Re-Trades",
+          "content": "Our LOI is our word. We price deals fairly upfront, conduct focused diligence, and close on the terms we agreed to. Every time."
+        },
+        {
+          "headline": "Patient Capital",
+          "content": "We hold companies for the long term. Our investment horizon is aligned with building durable value — not engineering a quick exit."
+        },
+        {
+          "headline": "Founder-Friendly",
+          "content": "We respect what you've built. Rollover equity, management retention, and legacy preservation are core to how we structure every transaction."
+        },
+        {
+          "headline": "Hands-On Support",
+          "content": "Post-close, our operating team is a resource, not a burden. We support where needed and step back where management thrives."
+        },
+        {
+          "headline": "Sector Expertise",
+          "content": "Decades of experience in precision manufacturing give us an edge in diligence, integration, and identifying opportunities others miss."
+        }
+      ],
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

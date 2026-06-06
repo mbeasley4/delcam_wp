@@ -1,0 +1,16 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/prose-content",
+  "title": "DelCam: Prose Content",
+  "category": "delcam",
+  "description": "Constrained, typographically styled container for legal and text-heavy pages (privacy policy, terms & conditions, etc.).",
+  "keywords": ["delcam", "prose", "legal", "content", "terms", "privacy"],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "supports": {
+    "html": false,
+    "align": false
+  }
+}

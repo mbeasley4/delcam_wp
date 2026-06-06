@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/portfolio-marquee",
+  "title": "DelCam: Portfolio Marquee",
+  "category": "delcam",
+  "description": "Scrolling ticker of portfolio company names. Companies managed directly in the block.",
+  "keywords": [
+    "delcam",
+    "marquee",
+    "ticker",
+    "portfolio",
+    "companies"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "darkBackground": {
+      "type": "boolean",
+      "default": true
+    },
+    "companies": {
+      "type": "array",
+      "default": [
+        {
+          "company_name": "PLASTECH MACHINING"
+        },
+        {
+          "company_name": "NEFM"
+        },
+        {
+          "company_name": "PLASTECH MOLDING"
+        },
+        {
+          "company_name": "PRECISION PLASTICS"
+        },
+        {
+          "company_name": "AEROSPACE FABRICATION"
+        }
+      ],
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

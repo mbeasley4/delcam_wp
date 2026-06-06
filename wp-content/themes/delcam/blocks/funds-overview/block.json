@@ -1,0 +1,66 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/funds-overview",
+  "title": "DelCam: Funds Overview",
+  "category": "delcam",
+  "description": "Section displaying fund cards. Funds managed directly in the block.",
+  "keywords": [
+    "delcam",
+    "funds",
+    "portfolio",
+    "overview",
+    "investments"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": "// Our Funds"
+    },
+    "sectionHeadline": {
+      "type": "string",
+      "default": "FUNDS\nOVERVIEW"
+    },
+    "button1Text": {
+      "type": "string",
+      "default": "Schedule a Conversation"
+    },
+    "button1Url": {
+      "type": "string",
+      "default": "/contact/"
+    },
+    "button2Text": {
+      "type": "string",
+      "default": "View Our Portfolio"
+    },
+    "button2Url": {
+      "type": "string",
+      "default": "/portfolio/"
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": true
+    },
+    "funds": {
+      "type": "array",
+      "default": [
+        {
+          "fund_name": "DelCam Capital Fund I",
+          "fund_description": "Our inaugural fund focused on lower middle-market businesses with proven cash flow and clear operational improvement opportunities.",
+          "companies_text": "Portfolio Company A\nPortfolio Company B\nPortfolio Company C"
+        },
+        {
+          "fund_name": "DelCam Capital Fund II",
+          "fund_description": "Building on our track record, Fund II targets sector-focused opportunities in business services, industrials, and healthcare services.",
+          "companies_text": "Portfolio Company D\nPortfolio Company E"
+        }
+      ],
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

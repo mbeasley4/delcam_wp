@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/team-members",
+  "title": "DelCam: Team Members",
+  "category": "delcam",
+  "description": "Dark section displaying Leadership and Advisory team members pulled from the team_member CPT.",
+  "keywords": [
+    "delcam",
+    "team",
+    "people",
+    "leadership",
+    "advisory"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": "// Our People"
+    },
+    "sectionHeadline": {
+      "type": "string",
+      "default": "THE TEAM"
+    },
+    "leadershipLabel": {
+      "type": "string",
+      "default": "// Leadership"
+    },
+    "leadershipEyebrow": {
+      "type": "string",
+      "default": "// Leadership"
+    },
+    "advisoryLabel": {
+      "type": "string",
+      "default": "// Advisory"
+    },
+    "advisoryEyebrow": {
+      "type": "string",
+      "default": "// Advisory Board"
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/interior-page-hero",
+  "title": "DelCam: Interior Page Hero",
+  "category": "delcam",
+  "description": "Compact dark-navy hero for interior pages with eyebrow label, headline, and optional subhead.",
+  "keywords": ["delcam", "hero", "interior", "page", "header"],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "headline": {
+      "type": "string",
+      "default": ""
+    },
+    "subhead": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

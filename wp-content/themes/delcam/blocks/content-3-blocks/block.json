@@ -1,0 +1,56 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/content-3-blocks",
+  "title": "DelCam: Content + 3 Feature Boxes",
+  "category": "delcam",
+  "description": "Light section with a headline and intro text above three feature cards. Card icons are managed via ACF image fields on the page.",
+  "keywords": [
+    "delcam",
+    "content",
+    "features",
+    "cards",
+    "blocks"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "headline": {
+      "type": "string",
+      "default": "HOW WE CREATE VALUE"
+    },
+    "mainContent": {
+      "type": "string",
+      "default": "Our approach combines operational expertise with strategic capital to build lasting value in precision manufacturing."
+    },
+    "headline1": {
+      "type": "string",
+      "default": "Growth Focus"
+    },
+    "content1": {
+      "type": "string",
+      "default": "We identify and acquire founder-owned manufacturers with proven business models and strong growth potential."
+    },
+    "headline2": {
+      "type": "string",
+      "default": "Team Partnership"
+    },
+    "content2": {
+      "type": "string",
+      "default": "Backing strong management teams with meaningful equity and operational support to drive sustainable performance."
+    },
+    "headline3": {
+      "type": "string",
+      "default": "Innovation & Scale"
+    },
+    "content3": {
+      "type": "string",
+      "default": "Investing in technology modernization and process improvements to capture higher-value work and expand margins."
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

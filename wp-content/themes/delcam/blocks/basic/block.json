@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/basic",
+  "title": "DelCam: Basic Content",
+  "category": "delcam",
+  "description": "Simple content section with a headline, body text, and optional buttons.",
+  "keywords": [
+    "delcam",
+    "basic",
+    "content",
+    "text"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": "// For Business Owners"
+    },
+    "headline": {
+      "type": "string",
+      "default": "Section Headline"
+    },
+    "content": {
+      "type": "string",
+      "default": ""
+    },
+    "button1Label": {
+      "type": "string",
+      "default": ""
+    },
+    "button1Url": {
+      "type": "string",
+      "default": ""
+    },
+    "button1Target": {
+      "type": "string",
+      "default": ""
+    },
+    "button2Label": {
+      "type": "string",
+      "default": ""
+    },
+    "button2Url": {
+      "type": "string",
+      "default": ""
+    },
+    "button2Target": {
+      "type": "string",
+      "default": ""
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

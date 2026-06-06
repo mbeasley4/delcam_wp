@@ -1,0 +1,68 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/vertical-blocks",
+  "title": "DelCam: Content + Vertical Blocks",
+  "category": "delcam",
+  "description": "Section with a headline, countdown inset, and numbered process steps. Steps managed directly in the block.",
+  "keywords": [
+    "delcam",
+    "process",
+    "approach",
+    "steps",
+    "vertical"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": "// Our Approach"
+    },
+    "headline": {
+      "type": "string",
+      "default": "FROM FIRST CALL\nTO CLOSE."
+    },
+    "content": {
+      "type": "string",
+      "default": "We move with certainty and respect your time. No re-trades, no surprises. Our process reflects how we will operate as your partner."
+    },
+    "countdownNumber": {
+      "type": "string",
+      "default": "60–90"
+    },
+    "countdownLabel": {
+      "type": "string",
+      "default": "DAYS TO CLOSE"
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": true
+    },
+    "verticalBlocks": {
+      "type": "array",
+      "default": [
+        {
+          "title": "Introductory Conversation",
+          "content": "A confidential, no-pressure discussion about your business, your goals, and whether we're the right fit. We listen first."
+        },
+        {
+          "title": "Indication of Interest",
+          "content": "A non-binding letter outlining valuation range and deal structure within 2–3 weeks of receiving financials. No delays, no games."
+        },
+        {
+          "title": "Diligence & LOI",
+          "content": "Focused, efficient due diligence with a dedicated team. We aim to be respectful of your time and management bandwidth."
+        },
+        {
+          "title": "Close & Partnership",
+          "content": "We close on time, every time. Day one begins a partnership built on trust, transparency, and shared upside."
+        }
+      ],
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

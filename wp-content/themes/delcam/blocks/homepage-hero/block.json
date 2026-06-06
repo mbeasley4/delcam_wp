@@ -1,0 +1,83 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/homepage-hero",
+  "title": "DelCam: Homepage Hero",
+  "category": "delcam",
+  "description": "Full-width hero with headline, CTAs, and stat card grid. Stats managed directly in the block.",
+  "keywords": [
+    "delcam",
+    "hero",
+    "homepage",
+    "stats"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": "// Private Equity"
+    },
+    "headline": {
+      "type": "string",
+      "default": "Building Enduring\nManufacturing [span class=\"text-gold\"]Value.[/span]"
+    },
+    "subhead": {
+      "type": "string",
+      "default": "Long-term capital partnerships with precision manufacturers across the United States"
+    },
+    "button1Text": {
+      "type": "string",
+      "default": "Our Strategy"
+    },
+    "button1Url": {
+      "type": "string",
+      "default": "/strategy/"
+    },
+    "button2Text": {
+      "type": "string",
+      "default": "View Portfolio"
+    },
+    "button2Url": {
+      "type": "string",
+      "default": "/portfolio/"
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": true
+    },
+    "statCards": {
+      "type": "array",
+      "default": [
+        {
+          "stat_value": "$2B+",
+          "is_gold": true,
+          "stat_label": "Assets Under Management",
+          "stat_description": "Deployed across platform companies"
+        },
+        {
+          "stat_value": "30+",
+          "is_gold": false,
+          "stat_label": "Portfolio Companies",
+          "stat_description": "Precision manufacturing focus"
+        },
+        {
+          "stat_value": "25+",
+          "is_gold": false,
+          "stat_label": "Years of Experience",
+          "stat_description": "Investing in manufacturing since 1998"
+        },
+        {
+          "stat_value": "100%",
+          "is_gold": false,
+          "stat_label": "Made in America",
+          "stat_description": "Domestic manufacturing portfolio"
+        }
+      ],
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

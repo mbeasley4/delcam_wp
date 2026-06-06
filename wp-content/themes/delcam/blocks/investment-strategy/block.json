@@ -1,0 +1,74 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/investment-strategy",
+  "title": "DelCam: Investment Strategy",
+  "category": "delcam",
+  "description": "White section with a heading, gradient banner, and a strategy card grid. Cards are managed via ACF repeater on the page.",
+  "keywords": [
+    "delcam",
+    "strategy",
+    "investment",
+    "cards"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": "// Investment Focus"
+    },
+    "sectionHeadline": {
+      "type": "string",
+      "default": "OUR\nSTRATEGY"
+    },
+    "description": {
+      "type": "string",
+      "default": "We acquire and build leading precision manufacturing businesses \u2014 partnering with management teams to drive sustainable, long-term growth."
+    },
+    "bannerBadge": {
+      "type": "string",
+      "default": "PLATFORM STRATEGY"
+    },
+    "bannerHeadline": {
+      "type": "string",
+      "default": "Acquire. Operate. Grow."
+    },
+    "ctaLabel": {
+      "type": "string",
+      "default": "SELL YOUR COMPANY"
+    },
+    "ctaHeadline": {
+      "type": "string",
+      "default": "Ready to explore a partnership?"
+    },
+    "ctaContent": {
+      "type": "string",
+      "default": "We provide confidential, straightforward conversations for owners considering their next chapter."
+    },
+    "ctaButtonText": {
+      "type": "string",
+      "default": "Start a Conversation"
+    },
+    "ctaButtonUrl": {
+      "type": "string",
+      "default": "/contact/"
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": false
+    },
+    "strategyCards": {
+      "type": "array",
+      "default": [
+        { "title": "Platform Acquisitions",    "content": "We target founder-owned precision manufacturers with $5M–$50M EBITDA, building regional and national platforms through add-on acquisitions.",       "icon": "building", "link_text": "Learn more", "link_url": "/strategy/" },
+        { "title": "Operational Excellence",   "content": "Our operating partners embed within portfolio companies to implement lean manufacturing, ERP systems, and workforce development programs.",          "icon": "chart",    "link_text": "Learn more", "link_url": "/strategy/" },
+        { "title": "Management Partnerships",  "content": "We back strong management teams with meaningful equity, aligning incentives for long-term value creation alongside our capital.",                    "icon": "team",     "link_text": "Learn more", "link_url": "/strategy/" },
+        { "title": "Technology Modernization", "content": "Capital investment in advanced CNC, robotics, and automation to increase throughput, reduce costs, and capture higher-value work.",                  "icon": "tech",     "link_text": "Learn more", "link_url": "/strategy/" },
+        { "title": "Geographic Expansion",     "content": "Building regional density in key manufacturing corridors to share back-office resources, purchasing leverage, and customer relationships.",          "icon": "globe",    "link_text": "Learn more", "link_url": "/strategy/" }
+      ],
+      "items": { "type": "object" }
+    }
+  }
+}

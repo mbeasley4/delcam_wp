@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/content-image",
+  "title": "DelCam: Content + Image",
+  "category": "delcam",
+  "description": "Two-column section with rich text on one side and a photo on the other.",
+  "keywords": [
+    "delcam",
+    "content",
+    "image",
+    "two-column"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": "// Our Story"
+    },
+    "headline": {
+      "type": "string",
+      "default": "BUILT BY OPERATORS."
+    },
+    "bodyContent": {
+      "type": "string",
+      "default": "<p>DelCam Capital partners with founders and management teams to build enduring precision manufacturing businesses. We bring operational expertise, patient capital, and a hands-on approach to every partnership.</p>"
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": ""
+    },
+    "imageId": {
+      "type": "number",
+      "default": 0
+    },
+    "swapImage": {
+      "type": "boolean",
+      "default": false
+    },
+    "ctaLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "ctaTarget": {
+      "type": "string",
+      "default": ""
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

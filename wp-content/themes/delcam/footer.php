@@ -5,14 +5,14 @@
  * @package DelCam_Capital
  */
 
-$address = get_field( 'footer_address', 'option' );
+$address = get_option( 'delcam_footer_address', '' );
 ?>
 
 <footer id="colophon" class="bg-dark py-16 px-6 lg:px-12">
 	<div class="max-w-7xl mx-auto">
 
-		<!-- 4-column grid -->
-		<div class="grid md:grid-cols-4 gap-12 mb-12">
+		<!-- 2-column grid: branding + nav -->
+		<div class="grid md:grid-cols-[1fr_auto] gap-12 mb-12">
 
 			<!-- Column 1: Branding -->
 			<div>
@@ -25,7 +25,7 @@ $address = get_field( 'footer_address', 'option' );
 					Private equity focused on precision manufacturing.<br><br>
 					<?php if ( ! empty( $address ) ) : ?>
 						<div class="text-sm leading-relaxed mb-4 text-white/60">
-						<?php echo $address; ?>
+						<?php echo wp_kses_post( $address ); ?>
 						</div>
 					<?php else : ?>
 						New Hampshire, USA
@@ -45,50 +45,20 @@ $address = get_field( 'footer_address', 'option' );
 				</div>
 			</div>
 
-			<!-- Column 2: Strategy -->
+			<!-- Column 2: Navigation (mirrors primary menu-1) -->
 			<div>
-				<p class="font-mono tracking-[0.15em] text-gold mb-5 uppercase">Strategy</p>
+				<p class="font-mono tracking-[0.15em] text-gold mb-4 uppercase">Explore</p>
 				<?php
 				wp_nav_menu(
 					array(
-						'theme_location' => 'menu-2',
+						'theme_location' => 'menu-1',
 						'menu_id'        => 'footer-menu',
 						'container'      => false,
-						'items_wrap'     => '<ul class="flex flex-col gap-3">%3$s</ul>',
+						'items_wrap'     => '<ul class="footer-nav list-none">%3$s</ul>',
 						'fallback_cb'    => false,
 					)
 				);
 				?>
-				<?php if ( ! has_nav_menu( 'menu-2' ) ) : ?>
-				<ul class="flex flex-col gap-3">
-					<li><a href="/strategy/" class="text-sm text-white">Platform Acquisitions</a></li>
-					<li><a href="/strategy/" class="text-sm text-white">Operational Excellence</a></li>
-					<li><a href="/strategy/" class="text-sm text-white">Management Partnerships</a></li>
-					<li><a href="/strategy/" class="text-sm text-white">Technology Investment</a></li>
-				</ul>
-				<?php endif; ?>
-			</div>
-
-			<!-- Column 3: Portfolio -->
-			<div>
-				<p class="font-mono tracking-[0.15em] text-gold mb-5 uppercase">Portfolio</p>
-				<ul class="flex flex-col gap-3">
-					<li><a href="/portfolio/" class="text-sm text-white">PlasTech Machining</a></li>
-					<li><a href="/portfolio/" class="text-sm text-white">NEFM</a></li>
-					<li><a href="/portfolio/" class="text-sm text-white">PlasTech Molding</a></li>
-					<li><a href="/portfolio/" class="text-sm font-semibold text-white">View All Companies &rarr;</a></li>
-				</ul>
-			</div>
-
-			<!-- Column 4: Contact -->
-			<div>
-				<p class="font-mono tracking-[0.15em] text-gold mb-5 uppercase">Contact</p>
-				<ul class="flex flex-col gap-3">
-					<li><a href="/investor-relations/" class="text-sm text-white">Investor Relations</a></li>
-					<li><a href="/contact/" class="text-sm text-white">Acquisition Inquiries</a></li>
-					<li><a href="/careers/" class="text-sm text-white">Careers</a></li>
-					<li><a href="/news/" class="text-sm text-white">Media &amp; Press</a></li>
-				</ul>
 			</div>
 
 		</div><!-- .grid -->
@@ -101,7 +71,6 @@ $address = get_field( 'footer_address', 'option' );
 			<div class="flex items-center gap-6">
 				<a href="/privacy-policy/" class="font-mono text-[0.65rem] text-white">Privacy Policy</a>
 				<a href="/terms-and-conditions/" class="font-mono text-[0.65rem] text-white">Terms &amp; Conditions</a>
-				<p class="font-mono text-[0.65rem] text-white">Associated DelCam Manufacturing Companies</p>
 			</div>
 		</div>
 

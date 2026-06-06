@@ -1,0 +1,56 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/firm-values",
+  "title": "DelCam: Firm Values",
+  "category": "delcam",
+  "description": "Section displaying core firm values. Values managed directly in the block.",
+  "keywords": [
+    "delcam",
+    "firm",
+    "values",
+    "culture",
+    "foundation"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": "// Our Foundation"
+    },
+    "sectionHeadline": {
+      "type": "string",
+      "default": "FIRM VALUES"
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": true
+    },
+    "values": {
+      "type": "array",
+      "default": [
+        {
+          "title": "Integrity",
+          "content": "We hold ourselves to the highest standards of transparency and honesty in every interaction with founders, investors, and partners."
+        },
+        {
+          "title": "Conviction",
+          "content": "We take concentrated positions in businesses we deeply understand, backing our thesis with patience and resolve through market cycles."
+        },
+        {
+          "title": "Partnership",
+          "content": "We operate as true partners to management teams — providing capital, operational expertise, and our network to accelerate growth."
+        },
+        {
+          "title": "Excellence",
+          "content": "We pursue superior outcomes by combining rigorous analysis, creative problem-solving, and disciplined execution at every stage."
+        }
+      ],
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

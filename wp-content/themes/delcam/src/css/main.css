@@ -46,9 +46,47 @@
 .wixui-rich-text__text {
 	font-size:0.9rem;
 }
-footer .menu-item a {
-	color: var(--white);
-	font-size:0.9rem;
+
+/* Footer nav — all bullets and indentation stripped */
+#colophon .footer-nav,
+#colophon .footer-nav ul,
+#colophon .footer-nav li {
+	list-style: none !important;
+	padding-left: 0 !important;
+	margin-left: 0 !important;
+}
+
+/* Top-level links */
+#colophon .footer-nav > li > a {
+	display: inline-block;
+	color: rgba(255, 255, 255, 0.78);
+	font-size: 0.95rem;
+	padding: 0.18rem 0;
+	transition: color 0.2s;
+	text-decoration: none;
+}
+
+#colophon .footer-nav > li > a:hover {
+	color: #fff;
+}
+
+/* Sub-menu items */
+#colophon .footer-nav .sub-menu {
+	margin-top: 0.05rem;
+	margin-bottom: 0.2rem;
+}
+
+#colophon .footer-nav .sub-menu li a {
+	display: inline-block;
+	font-size: 0.85rem;
+	color: rgba(255, 255, 255, 0.5);
+	padding: 0.12rem 0;
+	transition: color 0.2s;
+	text-decoration: none;
+}
+
+#colophon .footer-nav .sub-menu li a:hover {
+	color: rgba(255, 255, 255, 0.85);
 }
 
 @layer components {
@@ -87,11 +125,12 @@ footer .menu-item a {
 	display: flex;
 	align-items: center;
 	gap: 5px;
-	font-size: 0.9rem;
-	font-weight: 600;
+	font-size: 0.78rem;
+	font-weight: 700;
 	color: var(--navy);
 	text-decoration: none;
-	letter-spacing: 0.01em;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
 	transition: color 0.2s;
 	white-space: nowrap;
 	padding: 6px 0;
@@ -122,6 +161,24 @@ footer .menu-item a {
 	transform: scaleX(1);
 	}
 
+	/* ── "btn" class nav item → gold button ── */
+	.site-nav .menu-item.btn > a {
+	background: linear-gradient(135deg, var(--gold), var(--gold-light));
+	color: white !important;
+	padding: 8px 20px;
+	border-radius: 6px;
+	font-size: 0.75rem;
+	letter-spacing: 0.1em;
+	box-shadow: 0 2px 10px rgba(200, 146, 42, 0.3);
+	transition: transform 0.22s ease, box-shadow 0.22s ease;
+	}
+	.site-nav .menu-item.btn > a::after { display: none; }
+	.site-nav .menu-item.btn > a:hover {
+	color: white !important;
+	transform: translateY(-1px);
+	box-shadow: 0 8px 30px rgba(200, 146, 42, 0.4);
+	}
+
 	/* Dropdown chevron indicator (SVG injected via JS) */
 	.nav-chevron {
 	display: inline-flex;
@@ -149,8 +206,7 @@ footer .menu-item a {
 	min-width: 215px;
 	background: white;
 	border: 1px solid rgba(30, 95, 168, 0.15);
-	border-top: 2.5px solid var(--blue);
-	border-radius: 0 0 12px 12px;
+	border-radius: 12px;
 	box-shadow: 0 24px 64px rgba(11, 37, 69, 0.22), 0 4px 20px rgba(11, 37, 69, 0.08);
 	padding: 4px;
 	list-style: none;
@@ -172,7 +228,7 @@ footer .menu-item a {
 	height: 10px;
 	background: white;
 	border-left: 1px solid rgba(30, 95, 168, 0.15);
-	border-top: 2px solid var(--blue);
+	border-top: 1px solid rgba(30, 95, 168, 0.15);
 	z-index: 1;
 	}
 
@@ -187,7 +243,7 @@ footer .menu-item a {
 	/* Dropdown link items */
 	.site-nav .sub-menu .menu-item a {
 	display: block;
-	padding: 8px 10px 8px 11px;
+	padding: 8px 12px 8px 15px;
 	border-radius: 7px;
 	font-size: 0.83rem;
 	font-weight: 500;
@@ -221,6 +277,20 @@ footer .menu-item a {
 	transform: scaleX(1);
 	}
 
+	/* ── Mobile menu ── */
+	#mobile-menu {
+	border-top: 1px solid var(--border);
+	}
+
+	.hamburger-bar {
+	display: block;
+	width: 1.5rem;
+	height: 2px;
+	background: var(--navy);
+	border-radius: 1px;
+	transition: background 0.2s;
+	}
+
 	/* ── Mobile menu nav links ── */
 	#mobile-menu-items .menu-item {
 	list-style: none;
@@ -240,6 +310,28 @@ footer .menu-item a {
 	#mobile-menu-items > .menu-item > a:hover,
 	#mobile-menu-items > .menu-item.current-menu-item > a {
 	color: var(--blue);
+	}
+
+	/* ── "btn" class nav item → gold pill button (mobile) ── */
+	#mobile-menu-items > .menu-item.btn {
+	margin-top: 8px;
+	padding-top: 8px;
+	border-top: 1px solid var(--border);
+	}
+	#mobile-menu-items > .menu-item.btn > a {
+	display: inline-block;
+	background: linear-gradient(135deg, var(--gold), var(--gold-light));
+	color: white !important;
+	padding: 10px 24px;
+	border-radius: 6px;
+	text-align: center;
+	box-shadow: 0 2px 10px rgba(200, 146, 42, 0.3);
+	transition: transform 0.22s ease, box-shadow 0.22s ease;
+	}
+	#mobile-menu-items > .menu-item.btn > a:hover {
+	color: white !important;
+	transform: translateY(-1px);
+	box-shadow: 0 8px 30px rgba(200, 146, 42, 0.4);
 	}
 
 	/* Mobile sub-menu toggle button */
@@ -344,6 +436,19 @@ footer .menu-item a {
 	.card:hover::before { transform: scaleX(1); }
 
 	.card-gold::before { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+
+	/* ── Portfolio Cards ── */
+	.portfolio-card {
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+	}
+	.portfolio-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 16px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(200,146,42,0.35);
+	}
+	.portfolio-card:hover a[style*="color:var(--gold)"] {
+	color: var(--gold-light) !important;
+	}
 
 	/* ── Accent Lines ── */
 	.accent-line      { width: 40px; height: 3px; background: linear-gradient(90deg, var(--blue), var(--accent)); }
@@ -494,6 +599,71 @@ footer .menu-item a {
 	opacity: 0.3;
 	}
 
+	/* ── Block color schemes ──────────────────────────────────────────── */
+
+	/* LIGHT scheme — bright white with gold top-accent "pop" */
+	.section-light {
+	background: #fff;
+	position: relative;
+	}
+	.section-light::before {
+	content: '';
+	position: absolute;
+	top: 0; left: 0; right: 0;
+	height: 3px;
+	background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 40%, transparent 100%);
+	opacity: 0.7;
+	pointer-events: none;
+	z-index: 1;
+	}
+
+	/* DARK scheme — navy with ambient glow already applied per-block via section-dark */
+
+	/* Dark card — used inside both dark sections and as opt-in on light sections */
+	.card-dark {
+	background: rgba(255, 255, 255, 0.04);
+	border: 1px solid rgba(200, 146, 42, 0.18);
+	border-radius: 12px;
+	transition: background 0.22s, border-color 0.22s;
+	}
+	.card-dark:hover {
+	background: rgba(255, 255, 255, 0.07);
+	border-color: rgba(200, 146, 42, 0.38);
+	}
+
+	/* Light card "pop" — standard .card already exists; extend with shadow */
+	.card {
+	box-shadow: 0 2px 18px rgba(11, 37, 69, 0.07);
+	transition: box-shadow 0.22s, transform 0.22s;
+	}
+	.card:hover {
+	box-shadow: 0 8px 32px rgba(11, 37, 69, 0.13);
+	transform: translateY(-2px);
+	}
+
+	/* Ghost button — navy outline for use on light backgrounds */
+	.btn-ghost {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	padding: 12px 28px;
+	border-radius: 6px;
+	text-decoration: none;
+	transition: background 0.2s, color 0.2s;
+	border: 1.5px solid var(--navy);
+	color: var(--navy);
+	background: transparent;
+	}
+	.btn-ghost:hover {
+	background: var(--navy);
+	color: #fff;
+	}
+
 	/* ── Grid overlay utility (dark sections) ── */
 	.grid-overlay {
 	background-image:
@@ -509,6 +679,7 @@ footer .menu-item a {
 	}
 
 	/* ── Display headings (Bebas Neue) ── */
+	.text-gold { color: var(--gold-light); }
 	.heading-display {
 	font-family: 'Bebas Neue', cursive;
 	font-size: clamp(3rem, 7vw, 5rem);
@@ -578,6 +749,9 @@ footer .menu-item a {
 	/* ── Background patterns ── */
 	.bg-gradient-dark {
 	background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+	}
+	.bg-gradient-gold {
+	background: linear-gradient(135deg, var(--dark) 0%, #5a3a0a 100%);
 	}
 	.glow-gold {
 	background: radial-gradient(circle, rgba(200, 146, 42, 0.12) 0%, transparent 70%);
@@ -1054,7 +1228,7 @@ footer .menu-item a {
 	width: 40px;
 	height: 2px;
 	background: linear-gradient(90deg, var(--gold), var(--gold-light));
-	margin-bottom: 1.5rem;
+	margin-bottom: 0.5rem;
 	flex-shrink: 0;
 	}
 	.team-modal__bio {
@@ -1071,7 +1245,7 @@ footer .menu-item a {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.5rem;
-	margin-top: auto;
+	margin-bottom:0.5rem;
 	}
 	.team-modal__chip {
 	display: inline-flex;
@@ -1145,6 +1319,129 @@ footer .menu-item a {
 	.section-dark p.section-label {
 	color: rgba(200, 146, 42, 0.9);
 	}
+
+	/* ── Prose Content block (legal / text-heavy pages) ── */
+	.prose-content {
+	max-width: 60ch;
+	margin-inline: auto;
+	padding: 4rem 1.5rem 5rem;
+	color: var(--navy);
+	font-size: 1rem;
+	line-height: 1.75;
+	}
+
+	/* Gutenberg wrapper divs — strip all layout interference */
+	.prose-content .wp-block-columns,
+	.prose-content .wp-block-column,
+	.prose-content .container { all: unset; display: block; }
+
+	/* h2 — page title, Bebas Neue display treatment */
+	.prose-content h2 {
+	font-family: 'Bebas Neue', cursive;
+	font-size: clamp(2.2rem, 5vw, 3rem);
+	line-height: 1;
+	letter-spacing: 0.02em;
+	color: var(--navy);
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+	}
+
+	/* h3 — section headings, DM Sans bold */
+	.prose-content h3 {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 1.2rem;
+	font-weight: 700;
+	letter-spacing: 0.01em;
+	color: var(--navy);
+	margin-top: 2.5rem;
+	margin-bottom: 0.4rem;
+	}
+
+	/* h4 — sub-section labels, blue accent */
+	.prose-content h4 {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 0.95rem;
+	font-weight: 600;
+	color: var(--blue);
+	margin-top: 1.5rem;
+	margin-bottom: 0.25rem;
+	}
+
+	/* h5 / h6 — minor labels, mono style */
+	.prose-content h5,
+	.prose-content h6 {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--mid);
+	margin-top: 1.25rem;
+	margin-bottom: 0.2rem;
+	}
+
+	/* Paragraphs */
+	.prose-content p {
+	margin-top: 0;
+	margin-bottom: 1.1rem;
+	color: rgba(11, 37, 69, 0.82);
+	line-height: 1.75;
+	}
+
+	/* Effective date / meta lines */
+	.prose-content > p:first-of-type {
+	font-size: 0.9rem;
+	color: var(--mid);
+	}
+
+	/* Lists */
+	.prose-content ul,
+	.prose-content ol {
+	margin-top: 0.25rem;
+	margin-bottom: 1.1rem;
+	padding-left: 1.4rem;
+	}
+
+	.prose-content ul { list-style: disc; }
+	.prose-content ol { list-style: decimal; }
+
+	.prose-content li {
+	margin-bottom: 0.45rem;
+	padding-left: 0.25rem;
+	line-height: 1.65;
+	color: rgba(11, 37, 69, 0.82);
+	}
+
+	.prose-content li::marker {
+	color: var(--blue);
+	}
+
+	/* Nested lists */
+	.prose-content li > ul,
+	.prose-content li > ol {
+	margin-top: 0.35rem;
+	margin-bottom: 0.35rem;
+	}
+
+	/* Horizontal rules */
+	.prose-content hr {
+	border: none;
+	border-top: 1px solid rgba(30, 95, 168, 0.15);
+	margin: 2rem 0;
+	}
+
+	/* Links */
+	.prose-content a {
+	color: var(--blue);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+	transition: color 0.2s;
+	}
+	.prose-content a:hover { color: var(--sky); }
+
+	/* Strong / bold */
+	.prose-content strong { color: var(--navy); font-weight: 600; }
 
 	/* ── Marquee keyframes ── */
 	@keyframes marquee {

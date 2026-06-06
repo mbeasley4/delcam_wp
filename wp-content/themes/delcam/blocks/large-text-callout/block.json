@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/large-text-callout",
+  "title": "DelCam: Large Text Callout",
+  "category": "delcam",
+  "description": "Dark gradient CTA section with a large display headline and two buttons.",
+  "keywords": [
+    "delcam",
+    "callout",
+    "cta",
+    "banner"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": "// FOR BUSINESS OWNERS"
+    },
+    "callout": {
+      "type": "string",
+      "default": "IS IT TIME<br>TO TALK?"
+    },
+    "subtext": {
+      "type": "string",
+      "default": "Whether you're thinking about retirement, bringing on a growth partner, or just exploring options \u2014 we're a straightforward call. Confidential and obligation-free."
+    },
+    "button1Label": {
+      "type": "string",
+      "default": "Schedule a Conversation"
+    },
+    "button1Url": {
+      "type": "string",
+      "default": "/contact/"
+    },
+    "button1Target": {
+      "type": "string",
+      "default": ""
+    },
+    "button2Label": {
+      "type": "string",
+      "default": "View Our Portfolio"
+    },
+    "button2Url": {
+      "type": "string",
+      "default": "/portfolio/"
+    },
+    "button2Target": {
+      "type": "string",
+      "default": ""
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

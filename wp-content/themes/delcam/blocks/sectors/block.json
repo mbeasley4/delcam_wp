@@ -1,0 +1,96 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "delcam/sectors",
+  "title": "DelCam: Sectors",
+  "category": "delcam",
+  "description": "Section with sector pills and stat cards. Data managed directly in the block.",
+  "keywords": [
+    "delcam",
+    "sectors",
+    "pills",
+    "stats",
+    "manufacturing"
+  ],
+  "textdomain": "delcam",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "default": "// Target Sectors"
+    },
+    "sectionHeadline": {
+      "type": "string",
+      "default": "WE INVEST IN\nCRITICAL MANUFACTURING."
+    },
+    "darkBackground": {
+      "type": "boolean",
+      "default": false
+    },
+    "sectorPills": {
+      "type": "array",
+      "default": [
+        {
+          "pill_label": "Precision Machining"
+        },
+        {
+          "pill_label": "Plastics Fabrication"
+        },
+        {
+          "pill_label": "Metal Forming"
+        },
+        {
+          "pill_label": "Aerospace Components"
+        },
+        {
+          "pill_label": "Medical Device Manufacturing"
+        },
+        {
+          "pill_label": "Defense Supply Chain"
+        },
+        {
+          "pill_label": "Electronics Assembly"
+        },
+        {
+          "pill_label": "Industrial Automation"
+        },
+        {
+          "pill_label": "Specialty Coatings"
+        },
+        {
+          "pill_label": "Composite Materials"
+        }
+      ],
+      "items": {
+        "type": "object"
+      }
+    },
+    "statCards": {
+      "type": "array",
+      "default": [
+        {
+          "stat_value": "$5M",
+          "is_gold": true,
+          "stat_label": "Minimum EBITDA",
+          "stat_description": "Target company size for platform acquisitions"
+        },
+        {
+          "stat_value": "NE / SE",
+          "is_gold": false,
+          "stat_label": "Primary Geographies",
+          "stat_description": "Northeast and Southeast United States"
+        },
+        {
+          "stat_value": "3–7X",
+          "is_gold": true,
+          "stat_label": "Hold Period (Years)",
+          "stat_description": "Long-term orientation, not a quick flip"
+        }
+      ],
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

@@ -11,8 +11,8 @@
 
 get_header();
 
-$headline = ! empty( get_field( 'insights_headline', 'options' ) ) ? get_field( 'insights_headline', 'options' ) : 'INSIGHTS &[br]PERSPECTIVES';
-$subhead  = ! empty( get_field( 'insights_content', 'options' ) )  ? get_field( 'insights_content', 'options' )  : 'Analysis, perspectives, and firm updates from the DelCam Capital team.';
+$headline = get_option( 'delcam_insights_headline', 'INSIGHTS &[br]PERSPECTIVES' );
+$subhead  = get_option( 'delcam_insights_subhead',  'Analysis, perspectives, and firm updates from the DelCam Capital team.' );
 ?>
 
 <main id="primary" class="site-main">
