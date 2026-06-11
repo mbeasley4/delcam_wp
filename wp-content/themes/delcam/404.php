@@ -7,7 +7,7 @@
 
 get_header();
 ?>
-
+  
 <main id="primary" class="site-main">
 
 	<section class="section-dark relative overflow-hidden py-32 px-6 lg:px-12" style="min-height: 72vh; display: flex; align-items: center;">
