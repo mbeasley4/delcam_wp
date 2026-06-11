@@ -44,15 +44,6 @@ get_header();
 				The page you're looking for may have moved, been removed, or never existed. Let's get you back on track.
 			</p>
 
-			<!-- CTAs -->
-			<div class="flex flex-col sm:flex-row gap-4 justify-center">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn-gold inline-block text-sm px-10 py-4 rounded-md">
-					Return Home
-				</a>
-				<a href="/contact/" class="btn-ghost-white inline-block text-sm px-10 py-4 rounded-md">
-					Contact Us
-				</a>
-			</div>
 
 		</div>
 	</section>
