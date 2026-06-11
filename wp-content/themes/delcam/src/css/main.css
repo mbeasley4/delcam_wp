@@ -376,6 +376,12 @@
 	color: var(--blue);
 	}
 
+	/* 404 page — hide nav links, keep logo */
+	.error404 .site-topbar,
+	.error404 #masthead #primary-menu,
+	.error404 #masthead #mobile-menu,
+	.error404 .mobile-menu-toggle { display: none !important; }
+
 	/* WordPress wp_nav_menu output — footer nav */
 	#colophon .menu-item a {
 	color: rgba(255, 255, 255, 0.6);

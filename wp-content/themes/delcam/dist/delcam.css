@@ -1212,6 +1212,11 @@ video {
 #mobile-menu-items .sub-menu .menu-item a:hover {
 	color: var(--blue);
 	}
+/* 404 page — hide nav links, keep logo */
+.error404 .site-topbar,
+	.error404 #masthead #primary-menu,
+	.error404 #masthead #mobile-menu,
+	.error404 .mobile-menu-toggle { display: none !important; }
 /* WordPress wp_nav_menu output — footer nav */
 /* ── Hero ── */
 .hero-bg {
